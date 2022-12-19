@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {Routes , Route , Link} from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Typography from '@mui/material/Typography';
+import Homepage from './components/HomePage/Homepage'
+import { Navbar, Search , News} from './components';
+import { useState } from 'react';
+import StockInfo from './components/StockInfo';
 
-function App() {
+import './App.css';
+import { useEffect } from 'react';
+
+const darkTheme = createTheme({
+  palette: {
+
+    mode: 'dark',
+    background : {
+      paper : '#2C2B30'
+    }
+  },
+});
+
+
+
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ThemeProvider theme = {darkTheme}>
+      <CssBaseline/>
+    <div className="app">
+      <div className="navbar">
+      <Navbar />
+      </div>
+      <div className="main">
+          <div className="routes">
+            <Routes>
+              <Route path = "/" element = {<><Homepage/></>}/>
+              <Route path = "/search" element = {<Search/>}/>
+              <Route path = "/search/:stockID" element = {<StockInfo/>}/>
+              <Route path = "/news" element = {<News/>}/>            
+            </Routes>
+          </div>
+      </div>
     </div>
-  );
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
