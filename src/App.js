@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Homepage from './components/HomePage/Homepage'
-import { Navbar, Search , News} from './components';
+import { Search , News} from './components';
 import { useState } from 'react';
 import StockInfo from './components/StockInfo';
 
@@ -29,15 +29,13 @@ const App = () => {
     <ThemeProvider theme = {darkTheme}>
       <CssBaseline/>
     <div className="app">
-      <div className="navbar">
-      <Navbar />
-      </div>
+
       <div className="main">
           <div className="routes">
             <Routes>
               <Route path = "/" element = {<><Homepage/></>}/>
               <Route path = "/search" element = {<Search/>}/>
-              <Route path = "/search/:stockID" element = {<StockInfo/>}/>
+              <Route path = "/:stockID" element = {<StockInfo/>}/>
               <Route path = "/news" element = {<News/>}/>            
             </Routes>
           </div>

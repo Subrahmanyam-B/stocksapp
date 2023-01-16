@@ -24,52 +24,38 @@ export default class MiniChart extends Component {
     let stockChartValueFunctionY = [];
 
     fetch(
-      `https://cloud.iexapis.com/stable/stock/${StockSymbol}/chart/3m?token=pk_9b9d44ca1f9e4ca7997a58628632495e`
+      `https://flipper-backend-iiits-hacathonnnn.onrender.com/${StockSymbol}`
     )
       .then((response) => response.json())
       .then(function (data) {
-
-        for (var key in data) {
-          stockChartValueFunctionX.push(data[key].priceDate);
-          stockChartValueFunctionY.push(data[key].open);
+        var i = 0;
+        for (var key in data['business']) {
+          stockChartValueFunctionX.push(data['business'][key].Date);
+          stockChartValueFunctionY.push(data['business'][key].Open);
+          i++;
+          if (i === 31) break;
         }
-        
 
         pointerToThis.setState({
           stockChartValuesX: stockChartValueFunctionX,
           stockChartValuesY: stockChartValueFunctionY,
+          price : data['business'][1234].Close.toFixed(2),
 
         });
 
       })
       .catch((err) => console.error(err));
-      fetch(`https://cloud.iexapis.com/stable/stock/${StockSymbol}/company?token=pk_9b9d44ca1f9e4ca7997a58628632495e`)
-      .then((response) => response.json())  
-        .then(function (data) {
-            pointerToThis.setState({
-              title : data.companyName,
-              symbol : data.symbol,
-              exchange : data.exchange,
-            });
-          })
-          .catch((err) => console.error(err));
-        fetch(`https://cloud.iexapis.com/stable/stock/${StockSymbol}/quote/latestPrice?token=pk_9b9d44ca1f9e4ca7997a58628632495e`)
-      .then((response) => response.json())  
-        .then(function (data) {
-          pointerToThis.setState({
-            price : data,
-          })
-          })
-          .catch((err) => console.error(err));
+
   }
 
   render() {
-    return (<div className ="flex">
+    return (
+    <div className ="flex">
         <div>
           <MiniLineChart stockChartValues = {this.state.stockChartValuesY} dates = {this.state.stockChartValuesX}/>
         </div>
         <div className = "mini-price">${this.state.price}</div>
     </div>
     );
-  }
+  }     
 }

@@ -112,6 +112,7 @@ a:hover{
    color: var(--text-primary);
    margin-bottom: 10px;
    padding-left: 15px;
+   max-width: 60rem;
 }
 
 .line-chart{
@@ -119,10 +120,39 @@ a:hover{
    
 }
 
+.exchange-button {
+   color: white;
+   background-color : #2C2B30;
+   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+   border-radius: 15px;
+   border: none;
+   padding: 10px;
+   min-width: 10rem;
+   margin-left : 10px;
+}
+.exchange-button2 {
+   position:relative;
+   top: -40px;
+   background-color : #2C2B30;
+   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+   border-radius: 15px;
+   border: none;
+   margin: 5px 0;
+   padding: 10px;
+   min-width: 10rem;
+
+}
+
+.button-container{
+
+   margin-bottom: 10px;
+}
+
 .min-chart{
    position : relative;
+   
    left: 10px;
-   max-height: 140px;
+   max-height: 100px;
    overflow: none ;
 }
 
@@ -139,6 +169,9 @@ a:hover{
    align-items: center;
    justify-content: center;
 }
+.last {
+   padding-bottom: 20px;
+}
 
 .details{
    width: 100%;
@@ -146,6 +179,7 @@ a:hover{
    display: flex;
    flex-direction: column;
    justify-content: center;
+   margin-right: 20px;
 }
 
 .title{
@@ -184,7 +218,7 @@ input {
 
 .max {
    margin-top: 1rem;
-   max-width: 65rem;
+   max-width: 55rem;
 }
 
 .link-item{
@@ -237,4 +271,30 @@ img {
    align-items: center;
    justify-content: center;
    background-repeat: repeat;
+}
+
+.justify-between{
+   justify-content: space-between;
+}
+
+
+.chart-button {
+   color: white;
+   background-color : #484750;
+   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+   border-radius: 15px;
+   border: none;
+   padding: 5px;
+   min-width: 3rem;
+   margin-left : 10px;
+}
+
+.chart-button-container{
+   position: absolute;
+   right: 10px;
+   top: 10px;
+}
+
+.box-info{
+   max-width: 50rem;
 }

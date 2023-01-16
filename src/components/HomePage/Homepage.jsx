@@ -1,27 +1,34 @@
 import * as React from "react";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+
 import Chart from "./Chart";
 import { Typography } from "@mui/material";
 import StockList from "./StockList";
 import StockDetails from "./StockDetails";
 import { useState } from "react";
 import { Component } from "react";
+import { Link } from "react-router-dom";
+
+
 
 export default class Homepage extends Component{
   constructor(){
     super();
     this.state = {
-      HomeStock : 'TSLA'
+      HomeStock : 'tatasteel'
     }
     this.stock = this.state.HomeStock;
+  }
+
+  componentDidMount(){
   }
 
   render(){
     return(
     <>
-    <div className="heading flex">
+    <div className="heading flex justify-between">
        <h1>Dashboard </h1>
+
+        
      </div>
      <div className = "flex">
       <div className="main flex-col">
@@ -31,6 +38,14 @@ export default class Homepage extends Component{
         <StockDetails symbol = {this.state.HomeStock}/>
       </div>
       <div className="stock-list">
+      <div className="button-container">
+        <Link to="/nse">
+          <button className="exchange-button">NSE</button>
+        </Link>
+        <Link to = "/bse">
+          <button className="exchange-button">BSE</button>
+        </Link>
+       </div>
       <StockList/>
       </div>
 

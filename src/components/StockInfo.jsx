@@ -5,11 +5,12 @@ import Chart from "./HomePage/Chart";
 
 const StockInfo = () => {
    const {stockID} = useParams();
-  return (<>
+  return (<><div>
     <div className = "main-chart-card max">
       <Chart symbol = {stockID}/>
     </div>
       <StockDetails symbol = {stockID}/>
+  </div>
   </>
   )
 }
